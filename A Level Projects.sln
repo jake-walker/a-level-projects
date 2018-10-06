@@ -1,11 +1,10 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leap Year", "Leap Year.csproj", "{AF706AE5-5C19-49B8-9980-36992D2E2EF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leap Year", "Leap Year\Leap Year.csproj", "{AF706AE5-5C19-49B8-9980-36992D2E2EF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leap Year Tests", "..\Leap Year Tests\Leap Year Tests.csproj", "{AC0B8D83-B8C4-40C0-8D5D-3AC396B9ABFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leap Year Tests", "Leap Year Tests\Leap Year Tests.csproj", "{AC0B8D83-B8C4-40C0-8D5D-3AC396B9ABFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
