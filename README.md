@@ -5,3 +5,4 @@
 
 | Name | Description | GitHub Link |
 | ---- | ----------- | ----------- |
+| Leap Year | Calculate if an inputted year is a leap year or not. | |

@@ -1,0 +1,18 @@
+﻿<Window x:Class="Leap_Year.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Leap_Year"
+        mc:Ignorable="d"
+        Title="Leap Year" Width="200" Height="150">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="YearTextBox" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Column="1" Margin="5" KeyUp="YearTextBox_KeyUp"/>
+        <Label Content="Year:" VerticalAlignment="Top" Margin="5"/>
+        <TextBlock x:Name="ResultText" Text="Enter a year." Grid.Column="1" VerticalAlignment="Top" Margin="5,36,5,5" TextWrapping="Wrap"/>
+    </Grid>
+</Window>
