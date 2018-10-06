@@ -64,7 +64,7 @@ namespace Leap_Year
             }
 
             // Check if the year is not a leap year.
-            if (!IsLeapYear(Year))
+            if (!Leap.IsLeapYear(Year))
             {
                 // Set the text colour of the result label to be red.
                 ResultText.Foreground = new SolidColorBrush(Colors.Red);
@@ -83,50 +83,6 @@ namespace Leap_Year
             // Set the text of the label to tell the user that what they entered
             // was a leap year.
             ResultText.Text = $"{YearTextBox.Text} is a leap year.";
-        }
-
-        // This checks if the value is a leap year using switch/case statements
-        // which is a requirement of the task.
-        public bool IsLeapYear(int Year)
-        {
-            // Get the remainder of the year divided by 4.
-            switch(Year % 4)
-            {
-                // If the year divided by 4 leaves no remainder.
-                case 0:
-                    // Move onto the next switch statment.
-                    break;
-                // If the year divided by 100 leaves any remainder.
-                default:
-                    // The year is not a leap year.
-                    return false;
-            }
-
-            // Get the remainder of the year divided by 100.
-            switch (Year % 100)
-            {
-                // If the year divided by 100 leaves no remainder.
-                case 0:
-                    // Move onto the next switch statment.
-                    break;
-                // If the year divided by 100 leaves any remainder.
-                default:
-                    // The year is a leap year.
-                    return true;
-            }
-
-            // Get the remainder of the year divided by 400.
-            switch (Year % 400)
-            {
-                // If the year divided by 400 leaves no remainder.
-                case 0:
-                    // The year is a leap year.
-                    return true;
-                // If the year divided by 100 leaves any remainder.
-                default:
-                    // The year is not a leap year.
-                    return false;
-            }
         }
     }
 }

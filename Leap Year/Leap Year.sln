@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leap Year", "Leap Year.csproj", "{AF706AE5-5C19-49B8-9980-36992D2E2EF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leap Year Tests", "..\Leap Year Tests\Leap Year Tests.csproj", "{AC0B8D83-B8C4-40C0-8D5D-3AC396B9ABFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AF706AE5-5C19-49B8-9980-36992D2E2EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF706AE5-5C19-49B8-9980-36992D2E2EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF706AE5-5C19-49B8-9980-36992D2E2EF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC0B8D83-B8C4-40C0-8D5D-3AC396B9ABFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC0B8D83-B8C4-40C0-8D5D-3AC396B9ABFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC0B8D83-B8C4-40C0-8D5D-3AC396B9ABFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC0B8D83-B8C4-40C0-8D5D-3AC396B9ABFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
