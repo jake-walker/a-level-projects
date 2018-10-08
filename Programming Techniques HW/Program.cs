@@ -10,18 +10,45 @@ namespace Programming_Techniques_HW
     {
         static void Main(string[] args)
         {
+            // Run the sequence example.
             Console.WriteLine("SEQUENCE");
             Sequence();
 
+            // Run the selection example.
             Console.WriteLine("SELECTION");
             Selection();
 
+            // Run the iteration example.
             Console.WriteLine("ITERATION");
             Iteration();
 
+            // Run the recursion example.
             Console.WriteLine("RECURSION");
             Recursion(20);
 
+            // Run the two variable examples.
+            Console.WriteLine("GLOBAL AND LOCAL VARIABLES");
+            GlobalAndLocalVariables.Example1();
+            GlobalAndLocalVariables.Example2();
+
+            // Run the functions and procedures example.
+            Console.WriteLine("FUNCTIONS AND PROCEDURES");
+            FunctionsAndProcedures.Example();
+
+            // Run the parameter passing example.
+            Console.WriteLine("PARAMETER PASSING");
+            // Only passing in 1 parameter for this call, so the default value will
+            // be used for the second parameter.
+            ParameterPassing(5);
+            // Passing in 2 parameters for this call.
+            ParameterPassing(7, 9);
+
+            // Run the logic error example.
+            Console.WriteLine("LOGIC ERROR");
+            LogicError();
+
+            // Wait for the user to press enter before exiting so they can read
+            // all of the output.
             Console.WriteLine("Press enter to exit...");
             Console.ReadLine();
         }
@@ -43,7 +70,7 @@ namespace Programming_Techniques_HW
 
             // Get the day of the week.
             DayOfWeek day = DateTime.Now.DayOfWeek;
-            
+
             // If the day is Friday
             if (day == DayOfWeek.Friday)
             {
@@ -59,7 +86,7 @@ namespace Programming_Techniques_HW
                 Console.WriteLine($"It is {day.ToString()}, today.");
             }
         }
-        
+
         static void Iteration()
         {
             // Iteration is code that repeats a set number of times or until a condition
@@ -99,10 +126,62 @@ namespace Programming_Techniques_HW
             }
         }
 
+        // Parameters can be passed into functions, the function will then use these
+        // values to complete a task. Some of the parameters can be assigned default
+        // values which can be used if that value isn't passed in.
+        static void ParameterPassing(int required, int optional = 5)
+        {
+            // The parameters can then be used as local variables within the function.
+            Console.WriteLine($"First Parameter: {required}, Second Parameter: {optional}");
+        }
+
+        // Syntax is structure of statements in a programming language. For example in C#,
+        // a function statement needs to have brackets after it. This function is missing those
+        // brackets, so it causes a Syntax Error.
+        //
+        // static void SyntaxError
+        // {
+        // 
+        // }
+
+        static void LogicError()
+        {
+            // Make a new list of strings which will be printed out in order.
+            List<string> exampleList = new List<string>()
+            {
+                "The",
+                "quick",
+                "brown",
+                "fox",
+                "jumped",
+                "over",
+                "the",
+                "lazy",
+                "dog"
+            };
+
+            // Loop through each word in the list. This is an example of a logic error
+            // because the loop is starting at 1 (e.g 1, 2, 3, 4, 5...), but the list's
+            // indexes start at 0 so the first word isn't printed out.
+            for (int i = 1; i < exampleList.Count; i++)
+            {
+                // Print out the word to the console then add a space afterwards for the
+                // next word.
+                Console.Write(exampleList[i] + " ");
+            }
+            // Result: quick brown fox jumped over the lazy dog
+
+            // Add a full stop at the end. '\b' means backspace.
+            Console.WriteLine("\b.");
+        }
+    }
+
+    class GlobalAndLocalVariables {
         // Define a global variable, it can be accessed anywhere in this class.
-        const string GlobalVariable = "I am a global variable.";
-        
-        static void GlobalAndLocalVariables()
+        public const string GlobalVariable = "I am a global variable.";
+
+        // In the first example, the local variable is defined in the function.
+        public static void Example1()
         {
             // This creates a new local variable, it can only be accessed in this
             // function.
@@ -117,7 +196,8 @@ namespace Programming_Techniques_HW
             Console.WriteLine(localVariable);
         }
 
-        static void GlobalAndLocalVariables2()
+        // In the second example, the local variable is not defined so cannot be used.
+        public static void Example2()
         {
             // This line prints out the global variable. It can still be accessed
             // from this function because it is defined in the class.
@@ -127,8 +207,11 @@ namespace Programming_Techniques_HW
             // defined in this context/scope, so it can't be accessed.
             // Console.WriteLine(localVariable);
         }
+    }
 
-        static void FunctionAndProcedures()
+    class FunctionsAndProcedures
+    {
+        public static void Example()
         {
             // Functions usually require an input and always return back an output.
             int result = Function(4);
@@ -140,27 +223,18 @@ namespace Programming_Techniques_HW
             // Procedures are just a set of instructions.
             Procedure(4);
         }
-        
-        static int Function(int input)
+
+        public static int Function(int input)
         {
             // Functions will always return back a value.
             return input * 2;
         }
 
-        static void Procedure(int input)
+        public static void Procedure(int input)
         {
             // Procedures will just follow a set of instructions, for example:
             // printing a value to the console.
             Console.WriteLine(input * 2);
-        }
-
-        // Parameters can be passed into functions, the function will then use these
-        // values to complete a task. Some of the parameters can be assigned default
-        // values which can be used if that value isn't passed in.
-        static void ParameterPassing(int required, int optional = 5)
-        {
-            // The parameters can then be used as local variables within the function.
-            Console.WriteLine($"First Parameter: {required}, Second Parameter: {optional}");
         }
     }
 }
