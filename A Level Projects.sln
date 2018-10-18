@@ -8,7 +8,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leap Year Tests", "Leap Yea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programming Techniques HW", "Programming Techniques HW\Programming Techniques HW.csproj", "{E7F3AF2F-DA6D-452D-9D98-DD3FD5F56EFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biggest Number Out Of 10", "Biggest Number Out Of 10\Biggest Number Out Of 10.csproj", "{DEC049B0-FE19-4AA6-877E-BC3E66D52FB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biggest Number Out Of 10", "Biggest Number Out Of 10\Biggest Number Out Of 10.csproj", "{DEC049B0-FE19-4AA6-877E-BC3E66D52FB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Morse Code", "Morse Code\Morse Code.csproj", "{B94A048C-F65D-4CAC-9F37-777C7D5F5B6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{DEC049B0-FE19-4AA6-877E-BC3E66D52FB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEC049B0-FE19-4AA6-877E-BC3E66D52FB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEC049B0-FE19-4AA6-877E-BC3E66D52FB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B94A048C-F65D-4CAC-9F37-777C7D5F5B6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B94A048C-F65D-4CAC-9F37-777C7D5F5B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B94A048C-F65D-4CAC-9F37-777C7D5F5B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B94A048C-F65D-4CAC-9F37-777C7D5F5B6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
