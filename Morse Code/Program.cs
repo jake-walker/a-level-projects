@@ -6,15 +6,24 @@ namespace Morse_Code
     {
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Please enter a sentence to translate it to Morse Code.");
 
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write(" > ");
 
-            string[] sentence = Console.ReadLine().Split("");
+            Console.ForegroundColor = ConsoleColor.White;
+            string morse = Translator.ToMorse(Console.ReadLine().Trim());
 
-            foreach (string c in sentence)
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(morse);
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Press enter to exit...");
+
+            while (Console.ReadKey(true).Key != ConsoleKey.Enter)
             {
-
+                continue;
             }
         }
     }
