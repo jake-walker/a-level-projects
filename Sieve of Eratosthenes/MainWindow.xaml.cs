@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System;
 using System.Diagnostics;
+using System.Windows.Media;
 
 namespace Sieve_of_Eratosthenes
 {
@@ -26,16 +27,15 @@ namespace Sieve_of_Eratosthenes
         {
             gridRows.Clear();
             labels.Clear();
+            
+            int rows = (int)(targetNumber / 10) + 1;
 
-            int rows = targetNumber / 10;
-            int toAdd = (int)(targetNumber / 10) * 10;
+            Debug.WriteLine($"Need to add {rows} rows");
 
-            Debug.WriteLine($"Need to add {toAdd} rows");
-
-            /*for (var i = 1; i < toAdd; i++)
+            for (var i = 1; i < rows; i++)
             {
                 gridRows.Add(new RowDefinition());
-            }*/
+            }
 
             foreach (RowDefinition gridRow in gridRows)
             {
@@ -44,18 +44,46 @@ namespace Sieve_of_Eratosthenes
             }
 
             Debug.WriteLine($"Created {SeiveGrid.RowDefinitions.Count} rows!");
+
+            var ib = 1;
             
-            for (var r = 0; r < (gridRows.Count - 1); r++)
+            for (var r = 0; r < (gridRows.Count); r++)
             {
-                for (var c = 0; c < 9; c++)
+                for (var c = 0; c < 10; c++)
                 {
                     Debug.WriteLine($"Adding label at row {r}, column {c}...");
                     Label l = new Label();
-                    l.Content = $"{r},{c}";
+                    l.Content = $"{ib}";
                     labels.Add(l);
                     Grid.SetColumn(l, c);
                     Grid.SetRow(l, r);
                     SeiveGrid.Children.Add(l);
+
+                    ib += 1;
+                }
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            for (var i = 1; i < labels.Count; i++)
+            {
+                var num = i + 1;
+
+                for (var i2 = 0; i2 < labels.Count; i2++)
+                {
+                    
+
+                    var num2 = i2 + 1;
+
+                    //labels[i2].Content = $"({num2})";
+
+                    if (num2 % num == 0 && num2 != num)
+                    {
+                        labels[i2].Background = new SolidColorBrush(Colors.Red);
+                        labels[i2].FontStyle = FontStyles.Italic;
+                        
+                    }
                 }
             }
         }
