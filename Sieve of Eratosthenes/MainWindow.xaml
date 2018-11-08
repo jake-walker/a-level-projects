@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sieve_of_Eratosthenes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Sieve of Eratosthenes" Height="450" Width="800">
     <Grid>
-        <Grid x:Name="SeiveGrid" HorizontalAlignment="Left" Width="406" Background="#FFE8E8E8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="SeiveGrid" Background="#FFE8E8E8">
             <Grid.RowDefinitions>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -23,6 +27,17 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
         </Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="406,75,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <StackPanel Margin="0" Grid.Column="1">
+            <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Margin="5">
+                Hello! This program calculates prime numbers by using the Eratosthenes Sieve algorithm.
+                To get started click the button below.
+                <LineBreak></LineBreak>
+                <LineBreak></LineBreak>
+                Numbers with a background color are <Bold>not prime numbers</Bold> and numbers with no
+                background color are <Bold>prime numbers</Bold>. The numbers are colored depending on
+                their multiple.
+            </TextBlock>
+            <Button Content="Start" Width="75" Click="ButtonClick"/>
+        </StackPanel>
     </Grid>
 </Window>
