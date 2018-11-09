@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -111,6 +113,16 @@ namespace Sieve_of_Eratosthenes
         // This function is called when the user clicks the Start button.
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
+            // Call the sieve function.
+            DoSieve();
+        }
+
+        // This function actually colours the sieve, it is a asyncronous function
+        // so that it doesn't block the UI thread. If it did block the UI thread
+        // animations would not work as it only updates the UI after the function
+        // is finished.
+        private async void DoSieve()
+        {
             // This clears the not prime numbers list.
             this.notPrime.Clear();
 
@@ -154,6 +166,10 @@ namespace Sieve_of_Eratosthenes
 
                     // Add this number to the list of numbers that are not prime.
                     this.notPrime.Add(num2);
+
+                    // Wait for 50 milliseconds before continuing. The await runs this
+                    // asyncronously.
+                    await Task.Delay(50);
                 }
             }
         }
