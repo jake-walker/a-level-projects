@@ -10,3 +10,4 @@
 | Biggest Number Out Of 10 | In Lesson | Ask the user for 10 numbers and it will print the biggest number | [Biggest Number Out Of 10](https://github.com/jake-walker/a-level-projects/tree/master/Biggest%20Number%20Out%20Of%2010) |
 | Morse Code Translator | In Lesson | Ask the user for a sentence and translate it to morse code | [Morse Code](https://github.com/jake-walker/a-level-projects/tree/master/Morse%20Code) |
 | Sieve of Eratosthenes | In Lesson | Calculate prime numbers using the Sieve of Eratosthenes algorithm | [Sieve of Eratosthenes](https://github.com/jake-walker/a-level-projects/tree/master/Sieve%20of%20Eratosthenes) |
+| Strings | In Lesson | Calculate things about a string like the number of vowels, words, palindromes, whether there's an email, etc.. | [Strings](https://github.com/jake-walker/a-level-projects/tree/master/Strings) |

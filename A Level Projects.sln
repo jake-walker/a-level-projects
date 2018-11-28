@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Morse Code", "Morse Code\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieve of Eratosthenes", "Sieve of Eratosthenes\Sieve of Eratosthenes.csproj", "{B21A1048-5AE4-4113-AC87-BA2A3F5B440F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strings", "Strings\Strings.csproj", "{DB355C33-B6FB-4BF4-B697-0F2889354680}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{B21A1048-5AE4-4113-AC87-BA2A3F5B440F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B21A1048-5AE4-4113-AC87-BA2A3F5B440F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B21A1048-5AE4-4113-AC87-BA2A3F5B440F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB355C33-B6FB-4BF4-B697-0F2889354680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB355C33-B6FB-4BF4-B697-0F2889354680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB355C33-B6FB-4BF4-B697-0F2889354680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB355C33-B6FB-4BF4-B697-0F2889354680}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
