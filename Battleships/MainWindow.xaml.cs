@@ -28,42 +28,71 @@ namespace Battleships
             InitializeComponent();
 
             SetupGrid(5, 5);
+
+            
+
+            player1GridRectangles[new Coordinates(1, 1)].Fill = new SolidColorBrush(Colors.Red);
+            foreach (Coordinates k in player1GridRectangles.Keys)
+            {
+                System.Diagnostics.Debug.WriteLine(k.ToDigits());
+            }
         }
 
         public void SetupGrid(int cols, int rows)
         {
-            //player1Grid.ColumnDefinitions.Clear();
-            //player1Grid.RowDefinitions.Clear();
+            player1Grid.ColumnDefinitions.Clear();
+            player1Grid.RowDefinitions.Clear();
             player1GridRectangles.Clear();
+            player1Grid.Children.Clear();
 
             for (var c = 0; c < (cols + 1); c++)
             {
-                //player1Grid.ColumnDefinitions.Add(new ColumnDefinition());
+                player1Grid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
 
+            for (var r = 0; r < (rows + 1); r++)
+            {
+                player1Grid.RowDefinitions.Add(new RowDefinition());
+            }
+
+
+            for (var c = 0; c < (cols + 1); c++)
+            {
                 for (var r = 0; r < (rows + 1); r++)
                 {
-                    //player1Grid.RowDefinitions.Add(new RowDefinition());
+                    var currentCoords = new Coordinates(r, c);
 
                     if ((c == 0 || r == 0))
                     {
-                        System.Diagnostics.Debug.WriteLine($"Adding label @ Row{r} Col{c}");
-
                         // Create a label
-                        Label temp = new Label();
-                        temp.Content = $"R{r},C{c}";
-                        //temp.FontSize = 15;
-                        temp.HorizontalAlignment = HorizontalAlignment.Center;
-                        temp.VerticalAlignment = VerticalAlignment.Center;
+                        Label label = new Label
+                        {
+                            Content = currentCoords.ToSingleChar(),
+                            FontSize = 20,
+                            HorizontalAlignment = HorizontalAlignment.Center,
+                            VerticalAlignment = VerticalAlignment.Center
+                        };
 
-                        Grid.SetRow(temp, r+1);
-                        Grid.SetColumn(temp, c);
+                        Grid.SetRow(label, r);
+                        Grid.SetColumn(label, c);
 
-                        player1GridLabels.Add(new Coordinates(r, c), temp);
+                        player1GridLabels.Add(currentCoords, label);
 
-                        player1Grid.Children.Add(temp);
+                        player1Grid.Children.Add(label);
+                    } else
+                    {
+                        Rectangle rect = new Rectangle
+                        {
+                            Stroke = new SolidColorBrush(Colors.Black)
+                        };
+
+                        Grid.SetRow(rect, r);
+                        Grid.SetColumn(rect, c);
+
+                        player1GridRectangles.Add(currentCoords, rect);
+
+                        player1Grid.Children.Add(rect);
                     }
-
-                    System.Diagnostics.Debug.WriteLine($"Row{r} Col{c}");
                 }
             }
         }
