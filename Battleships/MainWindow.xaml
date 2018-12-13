@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Battleships"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Battleships" Height="450" Width="800">
     <Grid>
         <Grid x:Name="shipGrid" HorizontalAlignment="Left" Height="254" Margin="10,10,0,0" VerticalAlignment="Top" Width="254">
             <Grid.RowDefinitions>
@@ -40,25 +40,30 @@
             <Rectangle Grid.Column="4" Grid.Row="1" Stroke="Black"/>
             <Rectangle Grid.Column="5" Grid.Row="1" Stroke="Black"/>
             <Rectangle Grid.Column="6" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="1" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="2" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="3" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="4" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="5" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="6" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="1" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="2" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="3" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="4" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="5" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="6" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="1" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="2" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="3" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="4" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="5" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="6" Grid.Row="1" Stroke="Black"/>
-            <Rectangle Grid.Column="1" Grid.Row="1" Stroke="Black"/>
+            <Rectangle Grid.Column="1" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="2" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="3" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="4" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="5" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="6" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="1" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="2" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="3" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="4" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="5" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="6" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="1" Grid.Row="4" Stroke="Black"/>
+            <Rectangle Grid.Column="2" Grid.Row="4" Stroke="Black"/>
+            <Rectangle Grid.Column="3" Grid.Row="4" Stroke="Black"/>
+            <Rectangle Grid.Column="4" Grid.Row="4" Stroke="Black"/>
+            <Rectangle Grid.Column="5" Grid.Row="4" Stroke="Black"/>
+            <Rectangle Grid.Column="6" Grid.Row="4" Stroke="Black"/>
+            <Rectangle Grid.Column="1" Grid.Row="5" Stroke="Black"/>
+            <Rectangle Grid.Column="2" Grid.Row="5" Stroke="Black"/>
+            <Rectangle Grid.Column="3" Grid.Row="5" Stroke="Black"/>
+            <Rectangle Grid.Column="4" Grid.Row="5" Stroke="Black"/>
+            <Rectangle Grid.Column="5" Grid.Row="5" Stroke="Black"/>
+            <Rectangle Grid.Column="6" Grid.Row="5" Stroke="Black"/>
         </Grid>
 
     </Grid>
