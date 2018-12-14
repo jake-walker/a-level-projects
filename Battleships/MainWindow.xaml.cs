@@ -20,7 +20,7 @@ namespace Battleships
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Dictionary<Coordinates, Rectangle> player1GridRectangles = new Dictionary<Coordinates, Rectangle>();
+        //public Dictionary<Coordinates, Rectangle> player1GridRectangles = new Dictionary<Coordinates, Rectangle>();
         public Dictionary<Coordinates, Label> player1GridLabels = new Dictionary<Coordinates, Label>();
 
         public MainWindow()
@@ -31,18 +31,14 @@ namespace Battleships
 
             
 
-            player1GridRectangles[new Coordinates(1, 1)].Fill = new SolidColorBrush(Colors.Red);
-            foreach (Coordinates k in player1GridRectangles.Keys)
-            {
-                System.Diagnostics.Debug.WriteLine(k.ToDigits());
-            }
+            //player1GridRectangles[new Coordinates(1, 1)].Fill = new SolidColorBrush(Colors.Red);
         }
 
         public void SetupGrid(int cols, int rows)
         {
             player1Grid.ColumnDefinitions.Clear();
             player1Grid.RowDefinitions.Clear();
-            player1GridRectangles.Clear();
+            //player1GridRectangles.Clear();
             player1Grid.Children.Clear();
 
             for (var c = 0; c < (cols + 1); c++)
@@ -81,17 +77,24 @@ namespace Battleships
                         player1Grid.Children.Add(label);
                     } else
                     {
-                        Rectangle rect = new Rectangle
+                        Label label = new Label
                         {
-                            Stroke = new SolidColorBrush(Colors.Black)
+                            Content = currentCoords.ToString(),
+                            FontSize = 20,
+                            HorizontalAlignment = HorizontalAlignment.Stretch,
+                            VerticalAlignment = VerticalAlignment.Stretch,
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalContentAlignment = VerticalAlignment.Center,
+                            BorderBrush = new SolidColorBrush(Colors.Black),
+                            BorderThickness = new Thickness(1),
                         };
 
-                        Grid.SetRow(rect, r);
-                        Grid.SetColumn(rect, c);
+                        Grid.SetRow(label, r);
+                        Grid.SetColumn(label, c);
 
-                        player1GridRectangles.Add(currentCoords, rect);
+                        player1GridLabels.Add(currentCoords, label);
 
-                        player1Grid.Children.Add(rect);
+                        player1Grid.Children.Add(label);
                     }
                 }
             }

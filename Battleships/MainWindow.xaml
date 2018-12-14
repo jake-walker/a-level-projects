@@ -7,10 +7,60 @@
         mc:Ignorable="d"
         Title="Battleships" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="player1Grid" Margin="10"/>
+        <Grid x:Name="player1Grid" Margin="10" Grid.RowSpan="2"/>
+        <GroupBox Grid.Column="1" Header="Ship Types" Margin="2">
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Label Margin="0" Content="A" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Margin="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="B"/>
+                <Label Margin="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="C"/>
+                <Label Margin="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="D"/>
+                <Label Margin="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Content="S"/>
+
+                <Label Margin="0" Content="Aircraft Carrier" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+                <Label Margin="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Battleship" Grid.Column="1"/>
+                <Label Margin="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Cruiser" Grid.Column="1"/>
+                <Label Margin="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Destroyer" Grid.Column="1"/>
+                <Label Margin="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Submarine" Grid.Column="1"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="2" Header="Colour Codes" Margin="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Fill="#FF00B9FF"/>
+                <Rectangle Fill="#FF00FF51" Grid.Row="1"/>
+                <Rectangle Fill="#FFFF5151" Grid.Row="2"/>
+                <Label Content="Not Guessed Yet" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Label Content="Guessed but No Ship" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1"/>
+                <Label Content="Guessed and HIT!" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>
