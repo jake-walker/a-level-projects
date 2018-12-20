@@ -17,6 +17,28 @@ namespace Battleships
             Column = column;
         }
 
+        public static Coordinates Parse(string input)
+        {
+            input = input.ToLower();
+            int rownum;
+            int colnum;
+
+            if (input.Length != 2)
+            {
+                return null;
+            }
+
+            if (!int.TryParse(input[1].ToString(), out colnum))
+            {
+                return null;
+            }
+
+            char row = input[0];
+            rownum = ((row + 1) - 97);
+
+            return new Coordinates(rownum, colnum);
+        }
+
         public override string ToString()
         {
             Char row = (Char)(97 + (Row - 1));

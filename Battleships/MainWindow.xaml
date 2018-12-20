@@ -62,5 +62,10 @@
                 <Label Content="Guessed and HIT!" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2"/>
             </Grid>
         </GroupBox>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBlock x:Name="promptMessage" TextWrapping="Wrap" Text="Please enter the coordinates of the square you would like to attack (in the format A1)." Margin="5"/>
+            <TextBox x:Name="promptResponse" Height="23" TextWrapping="Wrap" Margin="5" KeyDown="promptResponse_KeyDown"/>
+            <Button x:Name="promptSubmit" Content="Submit" Margin="5" Click="promptSubmit_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
