@@ -1,0 +1,19 @@
+﻿<Window x:Class="Battleships.DifficultyDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Battleships"
+        mc:Ignorable="d"
+        Title="Difficulty Selection" Height="202.521" Width="300" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel>
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Select a difficulty" Margin="5"/>
+            <Button x:Name="easyButton" Content="Easy (4x4)" Margin="5" Click="easyButton_Click"/>
+            <Button x:Name="mediumButton" Content="Medium (5x5)" Margin="5" Click="mediumButton_Click"/>
+            <Button x:Name="hardButton" Content="Hard (7x7)" Margin="5" Click="hardButton_Click"/>
+            <Button x:Name="extremeButton" Content="Extreme (9x9)" Margin="5" Click="extremeButton_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

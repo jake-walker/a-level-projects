@@ -67,5 +67,10 @@
             <TextBox x:Name="promptResponse" Height="23" TextWrapping="Wrap" Margin="5" KeyDown="promptResponse_KeyDown"/>
             <Button x:Name="promptSubmit" Content="Submit" Margin="5" Click="promptSubmit_Click"/>
         </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <Label x:Name="shipsRemainingLabel" Content="Ships Remaining: 5" Margin="5"/>
+            <Label x:Name="guessesLabel" Content="Guesses: 0/10" Margin="5"/>
+            <Button x:Name="resetButton" Content="Reset" Margin="5" Click="resetButton_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

@@ -21,32 +21,75 @@ namespace Battleships
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Dictionary<Coordinates, Label> player1GridLabels = new Dictionary<Coordinates, Label>();
-        public Dictionary<Ship, Coordinates> player1Ships = new Dictionary<Ship, Coordinates>();
-        public Dictionary<Coordinates, GridSquare> gridSquares = new Dictionary<Coordinates, GridSquare>();
+        private GridController mainGrid = new GridController(7, 7);
 
-        public int GridRows = 5;
-        public int GridCols = 5;
+        private int GuessesUsed = 0;
+        private int MaxGuesses = 0;
 
         public MainWindow()
         {
             InitializeComponent();
+            Reset();
+        }
 
-            SetupGrid(GridRows, GridCols);
+        private void Reset()
+        {
+            DifficultyDialog dialog = new DifficultyDialog();
+
+            if (dialog.ShowDialog() == false)
+            {
+                return;
+            }
+
+            mainGrid = new GridController(dialog.Difficulty, dialog.Difficulty);
+            SetupGrid(mainGrid.Rows, mainGrid.Cols);
             StartGame();
             UpdateGrid();
+            UpdateUi();
+        }
+
+        private void UpdateUi()
+        {
+            shipsRemainingLabel.Content = $"Ships Remaining: {ShipsRemaining()}";
+
+            guessesLabel.Content = $"Guesses: {GuessesUsed}/{MaxGuesses}";
+        }
+
+        private int ShipsRemaining()
+        {
+            int count = 0;
+
+            foreach (Coordinates c in mainGrid.Ships.Values)
+            {
+                if (!mainGrid.Squares[c].Hit)
+                {
+                    count += 1;
+                }
+            }
+
+            return count;
+        }
+
+        private int CalcualateGuesses()
+        {
+            var area = mainGrid.Rows * mainGrid.Cols;
+            var result = (double)area / 2;
+            return int.Parse(Math.Ceiling(result).ToString());
         }
 
         public void StartGame()
         {
-            player1Ships.Clear();
-            gridSquares.Clear();
+            mainGrid.Ships.Clear();
+            mainGrid.Squares.Clear();
 
-            for (var r = 1; r < GridRows + 1; r++)
+            MaxGuesses = CalcualateGuesses();
+            GuessesUsed = 0;
+
+            for (var r = 1; r < mainGrid.Rows + 1; r++)
             {
-                for (var c = 1; c < GridCols + 1; c++)
+                for (var c = 1; c < mainGrid.Cols + 1; c++)
                 {
-                    gridSquares.Add(new Coordinates(r, c), new GridSquare());
+                    mainGrid.Squares.Add(new Coordinates(r, c), new GridSquare());
                     Debug.WriteLine(new Coordinates(r, c).ToString());
                 }
             }
@@ -57,18 +100,29 @@ namespace Battleships
                 var randRow = -1;
                 var randCol = -1;
 
-                while (randRow == -1 || randCol == -1 || player1Ships.Values.Contains(new Coordinates(randRow, randCol)))
+                while (randRow == -1 || randCol == -1 || mainGrid.Ships.Values.Contains(new Coordinates(randRow, randCol)))
                 {
-                    randRow = rand.Next(1, GridRows);
-                    randCol = rand.Next(1, GridCols);
+                    randRow = rand.Next(1, mainGrid.Rows);
+                    randCol = rand.Next(1, mainGrid.Cols);
                 }
 
                 Debug.WriteLine($"{ship} @ {randRow} {randCol}");
 
-                player1Ships.Add(new Ship
+                mainGrid.Ships.Add(new Ship
                 {
                     ShipType = ship
                 }, new Coordinates(randRow, randCol));
+            }
+        }
+
+        public void Finished(bool complete)
+        {
+            if (complete)
+            {
+                MessageBox.Show($"Congrats! You hit all the ships in {GuessesUsed} guesses!");
+            } else
+            {
+                MessageBox.Show($"Better luck next time! You ran out of guesses and finished with {ShipsRemaining()} ships remaining.");
             }
         }
 
@@ -78,43 +132,85 @@ namespace Battleships
 
             if (coords == null)
             {
+                MessageBox.Show("Those coordinates are invalid.");
                 return;
             }
 
-            gridSquares[coords].Hit = true;
+            if (coords.Row > mainGrid.Rows || coords.Column > mainGrid.Cols || coords.Row <= 0 || coords.Column <= 0)
+            {
+                MessageBox.Show("Those coordinates are invalid.");
+                return;
+            }
+
+            if (mainGrid.Squares[coords].Hit)
+            {
+                MessageBox.Show("You've already hit that square.");
+                return;
+            }
+
+            if (GuessesUsed >= MaxGuesses)
+            {
+                Finished(false);
+                return;
+            }
+
+            if (ShipsRemaining() <= 0)
+            {
+                Finished(true);
+                return;
+            }
+
+            Debug.WriteLine($"Parsed '{coordinates}' as {coords.ToString()}");
+
+            mainGrid.Squares[coords].Hit = true;
+
+            GuessesUsed += 1;
 
             UpdateGrid();
+            UpdateUi();
+
+            if (GuessesUsed >= MaxGuesses)
+            {
+                Finished(false);
+                return;
+            }
+
+            if (ShipsRemaining() <= 0)
+            {
+                Finished(true);
+                return;
+            }
         }
 
         public void UpdateGrid()
         {
-            for (var r = 1; r < GridRows + 1; r++)
+            for (var r = 1; r < mainGrid.Rows + 1; r++)
             {
-                for (var c = 1; c < GridCols + 1; c++)
+                for (var c = 1; c < mainGrid.Cols + 1; c++)
                 {
                     var coords = new Coordinates(r, c);
-                    if (gridSquares.ContainsKey(coords))
+                    if (mainGrid.Squares.ContainsKey(coords))
                     {
-                        if (gridSquares[coords].Hit)
+                        if (mainGrid.Squares[coords].Hit)
                         {
-                            if (player1Ships.ContainsValue(coords))
+                            if (mainGrid.Ships.ContainsValue(coords))
                             {
                                 // Ship
-                                var ship = player1Ships.FirstOrDefault(x => x.Value == coords).Key;
-                                player1GridLabels[coords].Background = new SolidColorBrush(Theme.HitColor);
-                                player1GridLabels[coords].Foreground = new SolidColorBrush(Colors.White);
-                                player1GridLabels[coords].Content = ship.ShipType;
+                                var ship = mainGrid.Ships.FirstOrDefault(x => x.Value.Equals(coords)).Key;
+                                mainGrid.Labels[coords].Background = new SolidColorBrush(Theme.HitColor);
+                                mainGrid.Labels[coords].Foreground = new SolidColorBrush(Colors.White);
+                                mainGrid.Labels[coords].Content = ship.ShipType;
                                 
                             } else
                             {
                                 // No Ship
-                                player1GridLabels[coords].Background = new SolidColorBrush(Theme.GuessedColor);
-                                player1GridLabels[coords].Foreground = new SolidColorBrush(Colors.White);
+                                mainGrid.Labels[coords].Background = new SolidColorBrush(Theme.GuessedColor);
+                                mainGrid.Labels[coords].Foreground = new SolidColorBrush(Colors.White);
                             }
                         } else
                         {
-                            player1GridLabels[coords].Background = new SolidColorBrush(Theme.NotGuessedColor);
-                            player1GridLabels[coords].Foreground = new SolidColorBrush(Colors.White);
+                            mainGrid.Labels[coords].Background = new SolidColorBrush(Theme.NotGuessedColor);
+                            mainGrid.Labels[coords].Foreground = new SolidColorBrush(Colors.White);
                         }
                     }
                 }
@@ -127,6 +223,9 @@ namespace Battleships
             player1Grid.ColumnDefinitions.Clear();
             player1Grid.RowDefinitions.Clear();
             player1Grid.Children.Clear();
+            mainGrid.Labels.Clear();
+            mainGrid.Ships.Clear();
+            mainGrid.Squares.Clear();
 
             for (var c = 0; c < (cols + 1); c++)
             {
@@ -159,7 +258,7 @@ namespace Battleships
                         Grid.SetRow(label, r);
                         Grid.SetColumn(label, c);
 
-                        player1GridLabels.Add(currentCoords, label);
+                        mainGrid.Labels.Add(currentCoords, label);
 
                         player1Grid.Children.Add(label);
                     } else
@@ -178,7 +277,7 @@ namespace Battleships
                         Grid.SetRow(label, r);
                         Grid.SetColumn(label, c);
 
-                        player1GridLabels.Add(currentCoords, label);
+                        mainGrid.Labels.Add(currentCoords, label);
 
                         player1Grid.Children.Add(label);
                     }
@@ -199,6 +298,11 @@ namespace Battleships
                 DoTurn(promptResponse.Text);
                 promptResponse.Clear();
             }
+        }
+
+        private void resetButton_Click(object sender, RoutedEventArgs e)
+        {
+            Reset();
         }
     }
 }

@@ -36,6 +36,11 @@ namespace Battleships
             char row = input[0];
             rownum = ((row + 1) - 97);
 
+            if (rownum <= 0 || colnum <= 0)
+            {
+                return null;
+            } 
+
             return new Coordinates(rownum, colnum);
         }
 
