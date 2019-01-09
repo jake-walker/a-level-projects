@@ -1,18 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Battleships
 {
@@ -57,9 +50,9 @@ namespace Battleships
 
         private int ShipsRemaining()
         {
-            int count = 0;
+            var count = 0;
 
-            foreach (Coordinates c in mainGrid.Ships.Values)
+            foreach (var c in mainGrid.Ships.Values)
             {
                 if (!mainGrid.Squares[c].Hit)
                 {
@@ -70,11 +63,11 @@ namespace Battleships
             return count;
         }
 
-        private int CalcualateGuesses()
+        private int CalculateGuesses()
         {
             var area = mainGrid.Rows * mainGrid.Cols;
             var result = (double)area / 2;
-            return int.Parse(Math.Ceiling(result).ToString());
+            return int.Parse(Math.Ceiling(result).ToString(CultureInfo.CurrentCulture));
         }
 
         public void StartGame()
@@ -82,7 +75,7 @@ namespace Battleships
             mainGrid.Ships.Clear();
             mainGrid.Squares.Clear();
 
-            MaxGuesses = CalcualateGuesses();
+            MaxGuesses = CalculateGuesses();
             GuessesUsed = 0;
 
             for (var r = 1; r < mainGrid.Rows + 1; r++)
@@ -94,7 +87,7 @@ namespace Battleships
                 }
             }
 
-            foreach (char ship in new char[] { 'A', 'B', 'C', 'D', 'S' })
+            foreach (var ship in new char[] { 'A', 'B', 'C', 'D', 'S' })
             {
                 var rand = new Random();
                 var randRow = -1;
@@ -117,13 +110,9 @@ namespace Battleships
 
         public void Finished(bool complete)
         {
-            if (complete)
-            {
-                MessageBox.Show($"Congrats! You hit all the ships in {GuessesUsed} guesses!");
-            } else
-            {
-                MessageBox.Show($"Better luck next time! You ran out of guesses and finished with {ShipsRemaining()} ships remaining.");
-            }
+            MessageBox.Show(complete
+                ? $"Congrats! You hit all the ships in {GuessesUsed} guesses!"
+                : $"Better luck next time! You ran out of guesses and finished with {ShipsRemaining()} ships remaining.");
         }
 
         public void DoTurn(string coordinates)
@@ -175,11 +164,9 @@ namespace Battleships
                 return;
             }
 
-            if (ShipsRemaining() <= 0)
-            {
-                Finished(true);
-                return;
-            }
+            if (ShipsRemaining() > 0) return;
+            Finished(true);
+            return;
         }
 
         public void UpdateGrid()
@@ -189,29 +176,27 @@ namespace Battleships
                 for (var c = 1; c < mainGrid.Cols + 1; c++)
                 {
                     var coords = new Coordinates(r, c);
-                    if (mainGrid.Squares.ContainsKey(coords))
+                    if (!mainGrid.Squares.ContainsKey(coords)) continue;
+                    if (mainGrid.Squares[coords].Hit)
                     {
-                        if (mainGrid.Squares[coords].Hit)
+                        if (mainGrid.Ships.ContainsValue(coords))
                         {
-                            if (mainGrid.Ships.ContainsValue(coords))
-                            {
-                                // Ship
-                                var ship = mainGrid.Ships.FirstOrDefault(x => x.Value.Equals(coords)).Key;
-                                mainGrid.Labels[coords].Background = new SolidColorBrush(Theme.HitColor);
-                                mainGrid.Labels[coords].Foreground = new SolidColorBrush(Colors.White);
-                                mainGrid.Labels[coords].Content = ship.ShipType;
+                            // Ship
+                            var ship = mainGrid.Ships.FirstOrDefault(x => x.Value.Equals(coords)).Key;
+                            mainGrid.Labels[coords].Background = new SolidColorBrush(Theme.HitColor);
+                            mainGrid.Labels[coords].Foreground = new SolidColorBrush(Colors.White);
+                            mainGrid.Labels[coords].Content = ship.ShipType;
                                 
-                            } else
-                            {
-                                // No Ship
-                                mainGrid.Labels[coords].Background = new SolidColorBrush(Theme.GuessedColor);
-                                mainGrid.Labels[coords].Foreground = new SolidColorBrush(Colors.White);
-                            }
                         } else
                         {
-                            mainGrid.Labels[coords].Background = new SolidColorBrush(Theme.NotGuessedColor);
+                            // No Ship
+                            mainGrid.Labels[coords].Background = new SolidColorBrush(Theme.GuessedColor);
                             mainGrid.Labels[coords].Foreground = new SolidColorBrush(Colors.White);
                         }
+                    } else
+                    {
+                        mainGrid.Labels[coords].Background = new SolidColorBrush(Theme.NotGuessedColor);
+                        mainGrid.Labels[coords].Foreground = new SolidColorBrush(Colors.White);
                     }
                 }
             }
@@ -247,7 +232,7 @@ namespace Battleships
                     if ((c == 0 || r == 0))
                     {
                         // Create a label
-                        Label label = new Label
+                        var label = new Label
                         {
                             Content = currentCoords.ToSingleChar(),
                             FontSize = 20,
@@ -263,7 +248,7 @@ namespace Battleships
                         player1Grid.Children.Add(label);
                     } else
                     {
-                        Label label = new Label
+                        var label = new Label
                         {
                             FontSize = 20,
                             HorizontalAlignment = HorizontalAlignment.Stretch,
@@ -293,11 +278,9 @@ namespace Battleships
 
         private void promptResponse_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
-            {
-                DoTurn(promptResponse.Text);
-                promptResponse.Clear();
-            }
+            if (e.Key != Key.Enter) return;
+            DoTurn(promptResponse.Text);
+            promptResponse.Clear();
         }
 
         private void resetButton_Click(object sender, RoutedEventArgs e)

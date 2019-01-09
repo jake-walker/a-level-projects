@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +30,7 @@ namespace Leap_Year
             // If the user didn't type anything in.
             if (string.IsNullOrWhiteSpace(YearTextBox.Text))
             {
-                // Set the text colour of the result label to be black.
+                // Set the text color of the result label to be black.
                 ResultText.Foreground = new SolidColorBrush(Colors.Black);
 
                 // Set the text of the label to tell the user that they need to type
@@ -42,17 +42,16 @@ namespace Leap_Year
             }
 
             // Make a new variable for storing the result of the integer parse.
-            int Year;
 
-            // Check if the textbox contents can be parsed as an integer and if it can,
-            // put the result into the year variable. Sanitise the user's input to remove
+            // Check if the text box contents can be parsed as an integer and if it can,
+            // put the result into the year variable. Sanitize the user's input to remove
             // spaces from the start or end.
-            bool IsNumeric = int.TryParse(YearTextBox.Text.Trim(), out Year);
+            var isNumeric = int.TryParse(YearTextBox.Text.Trim(), out var year);
 
             // If the inputted year is not numeric
-            if (!IsNumeric)
+            if (!isNumeric)
             {
-                // Set the text colour of the result label to be orange.
+                // Set the text color of the result label to be orange.
                 ResultText.Foreground = new SolidColorBrush(Colors.Orange);
 
                 // Set the text of the label to tell the user that what they entered
@@ -64,9 +63,9 @@ namespace Leap_Year
             }
 
             // Check if the year is not a leap year.
-            if (!Leap.IsLeapYear(Year))
+            if (!Leap.IsLeapYear(year))
             {
-                // Set the text colour of the result label to be red.
+                // Set the text color of the result label to be red.
                 ResultText.Foreground = new SolidColorBrush(Colors.Red);
 
                 // Set the text of the label to tell the user that what they entered
@@ -77,7 +76,7 @@ namespace Leap_Year
                 return;
             }
 
-            // Set the text colour of the result label to be green.
+            // Set the text color of the result label to be green.
             ResultText.Foreground = new SolidColorBrush(Colors.Green);
 
             // Set the text of the label to tell the user that what they entered

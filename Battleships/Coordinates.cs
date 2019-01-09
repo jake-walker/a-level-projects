@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Battleships
 {
@@ -20,21 +16,19 @@ namespace Battleships
         public static Coordinates Parse(string input)
         {
             input = input.ToLower();
-            int rownum;
-            int colnum;
 
             if (input.Length != 2)
             {
                 return null;
             }
 
-            if (!int.TryParse(input[1].ToString(), out colnum))
+            if (!int.TryParse(input[1].ToString(), out var colnum))
             {
                 return null;
             }
 
-            char row = input[0];
-            rownum = ((row + 1) - 97);
+            var row = input[0];
+            var rownum = ((row + 1) - 97);
 
             if (rownum <= 0 || colnum <= 0)
             {
@@ -46,7 +40,7 @@ namespace Battleships
 
         public override string ToString()
         {
-            Char row = (Char)(97 + (Row - 1));
+            var row = (char)(97 + (Row - 1));
             return $"{row.ToString().ToUpper()}{Column}";
         }
 
@@ -56,20 +50,20 @@ namespace Battleships
         }
 
         public string ToSingleChar()
-        {   
-            if (Column == 0 && Row == 0)
+        {
+            switch (Column)
             {
-                return "";
-            } else if (Column == 0)
-            {
-                Char row = (Char)(97 + (Row - 1));
-                return row.ToString().ToUpper();
-            } else if (Row == 0)
-            {
-                return Column.ToString();
-            } else
-            {
-                return ToString();
+                case 0 when Row == 0:
+                    return "";
+                case 0:
+                {
+                    var row = (char)(97 + (Row - 1));
+                    return row.ToString().ToUpper();
+                }
+                default:
+                {
+                    return Row == 0 ? Column.ToString() : ToString();
+                }
             }
         }
 
@@ -92,11 +86,5 @@ namespace Battleships
             hashCode = hashCode * -1521134295 + Column.GetHashCode();
             return hashCode;
         }
-
-        // Change what data is hashed so that when we compare it doesn't also use functions
-        /*public override int GetHashCode()
-        {
-            return Row.GetHashCode() ^ Column.GetHashCode();
-        }*/
     }
 }

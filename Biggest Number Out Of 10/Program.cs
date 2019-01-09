@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Biggest_Number_Out_Of_10
 {
@@ -12,12 +12,12 @@ namespace Biggest_Number_Out_Of_10
             // This is a loop which runs 10 times (1 to 10).
             for (int i = 1; i <= 10; i++)
             {
-                // Set the text colour to white.
+                // Set the text color to white.
                 Console.ForegroundColor = ConsoleColor.White;
                 // Ask the user to enter a number.
                 Console.WriteLine($"Enter #{i}:");
 
-                // Set the text colour to gray.
+                // Set the text color to gray.
                 Console.ForegroundColor = ConsoleColor.Gray;
                 // Add a cursor so the user knows to type something.
                 Console.Write(" > ");
@@ -29,13 +29,13 @@ namespace Biggest_Number_Out_Of_10
                 // integer.
                 while (!int.TryParse(Console.ReadLine(), out input))
                 {
-                    // Set the text colour to red for error.
+                    // Set the text color to red for error.
                     Console.ForegroundColor = ConsoleColor.Red;
                     // Print a new line and tell the user that they didn't
                     // enter a valid integer.
                     Console.WriteLine("\nPlease enter a valid integer.");
 
-                    // Set the text colour to grey
+                    // Set the text color to grey
                     Console.ForegroundColor = ConsoleColor.Gray;
                     // Print another cursor.
                     Console.Write(" > ");
@@ -51,12 +51,12 @@ namespace Biggest_Number_Out_Of_10
 
             // After the loop has finished.
 
-            // Set the text colour to cyan.
+            // Set the text color to cyan.
             Console.ForegroundColor = ConsoleColor.Cyan;
             // Print out the biggest number.
             Console.WriteLine($"Biggest Number: {biggest}");
 
-            // Set the text colour to gray.
+            // Set the text color to gray.
             Console.ForegroundColor = ConsoleColor.Gray;
             // Tell the user to press enter to quit.
             Console.WriteLine("Press enter to quit...");

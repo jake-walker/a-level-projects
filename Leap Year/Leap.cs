@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +10,14 @@ namespace Leap_Year
     {
         // This checks if the value is a leap year using switch/case statements
         // which is a requirement of the task.
-        public static bool IsLeapYear(int Year)
+        public static bool IsLeapYear(int year)
         {
             // Get the remainder of the year divided by 4.
-            switch (Year % 4)
+            switch (year % 4)
             {
                 // If the year divided by 4 leaves no remainder.
                 case 0:
-                    // Move onto the next switch statment.
+                    // Move onto the next switch statement.
                     break;
                 // If the year divided by 100 leaves any remainder.
                 default:
@@ -26,11 +26,11 @@ namespace Leap_Year
             }
 
             // Get the remainder of the year divided by 100.
-            switch (Year % 100)
+            switch (year % 100)
             {
                 // If the year divided by 100 leaves no remainder.
                 case 0:
-                    // Move onto the next switch statment.
+                    // Move onto the next switch statement.
                     break;
                 // If the year divided by 100 leaves any remainder.
                 default:
@@ -39,7 +39,7 @@ namespace Leap_Year
             }
 
             // Get the remainder of the year divided by 400.
-            switch (Year % 400)
+            switch (year % 400)
             {
                 // If the year divided by 400 leaves no remainder.
                 case 0:
