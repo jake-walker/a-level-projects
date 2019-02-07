@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading;
 
 namespace Search
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
