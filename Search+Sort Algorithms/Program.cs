@@ -13,8 +13,8 @@ namespace Search
                 // Print out a menu with different options
                 Console.Clear();
                 Console.WriteLine("What would you like to do?");
-                Console.WriteLine(" 1. Manual Search");
-                Console.WriteLine(" 2. Benchmark");
+                Console.WriteLine(" 1. Manual Search/Sort");
+                Console.WriteLine(" 2. Benchmark Search Algorithms");
                 Console.WriteLine(" 0. Quit");
                 Console.Write(" -> ");
                 
@@ -25,7 +25,7 @@ namespace Search
                 if (opt == "1")
                 {
                     // Start the manual search function
-                    ManualSearch();
+                    Manual();
                 // If the user picked to do a benchmark...
                 } else if (opt == "2")
                 {
@@ -128,10 +128,10 @@ namespace Search
         /// <summary>
         /// Function for asking a user which items to search for
         /// </summary>
-        static void ManualSearch()
+        static void Manual()
         {
             // Make a new list to store the items to search through
-            List<int> searchList = new List<int>();
+            var searchList = new List<int>();
 
             // Make a new item for the item that we are searching through
             int searchItem;
@@ -204,6 +204,7 @@ namespace Search
             // Initialize some variables for the search
             var done = false;
             var result = -1;
+            var resultList = new List<int>();
             Stopwatch watch = null;
 
             // While we haven't completed the search
@@ -213,6 +214,7 @@ namespace Search
                 Console.WriteLine("Pick a searching algorithm to use:");
                 Console.WriteLine(" (L) Linear Search");
                 Console.WriteLine(" (B) Binary Search");
+                Console.WriteLine(" (S) Bubble Sort");
                 Console.Write(" -> ");
                 
                 // Get the user's response.
@@ -244,6 +246,19 @@ namespace Search
                         done = true;
                         // Break from the switch case
                         break;
+                    // If the user chose a bubble sort
+                    case "S":
+                        // Start the stopwatch
+                        watch = Stopwatch.StartNew();
+                        resultList.AddRange(searchList);
+                        // Do the bubble sort
+                        resultList = Sort.Bubble(resultList);
+                        // Stop the stopwatch
+                        watch.Stop();
+                        // Set done to true so that we know that the search completed
+                        done = true;
+                        // Break from the switch case
+                        break;
                     // If the user chooses anything else
                     default:
                         // Tell the user that they picked an invalid option
@@ -253,13 +268,26 @@ namespace Search
                 }
             }
 
-            Console.Write("Search List:");
+            Console.Write("\nSearch List:");
             
             // For each item in the list we are searching through
             foreach (var item in searchList)
             {
                 // Print the item to the console
                 Console.Write($" {item} ");
+            }
+
+            // If there was a result list
+            if (resultList.Count > 0)
+            {
+                Console.Write("\nResult List:");
+            
+                // For each item in the list we have sorted
+                foreach (var item in resultList)
+                {
+                    // Print the item to the console
+                    Console.Write($" {item} ");
+                }
             }
 
             // Tell the user where the item was found by the search algorithm
