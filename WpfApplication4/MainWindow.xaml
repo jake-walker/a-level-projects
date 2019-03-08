@@ -1,0 +1,18 @@
+<Window x:Class="WpfApplication4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication4"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button x:Name="btnCustomers" Content="Click Here for the Customer List" HorizontalAlignment="Left" Margin="59,42,0,0" VerticalAlignment="Top" Width="216" Click="btnTime_Click"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="73" Margin="59,91,0,0" VerticalAlignment="Top" Width="364"/>
+        <Button x:Name="btnImportCSV" Content="CSV Import" HorizontalAlignment="Left" Height="28" Margin="59,268,0,0" VerticalAlignment="Top" Width="127" Click="btnImportCSV_Click"/>
+        <Button x:Name="btnCount" Content="Count" HorizontalAlignment="Left" Height="28" Margin="222,268,0,0" VerticalAlignment="Top" Width="89" Click="btnCount_Click"/>
+        <Label x:Name="lblCustomers" Content="Customers" HorizontalAlignment="Left" Height="32" Margin="321,32,0,0" VerticalAlignment="Top" Width="163"/>
+        <ComboBox x:Name="cboCustomers" HorizontalAlignment="Left" Height="31" Margin="59,183,0,0" VerticalAlignment="Top" Width="364"/>
+
+    </Grid>
+</Window>

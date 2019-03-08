@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search + Sort Algorithms", "Search+Sort Algorithms\Search + Sort Algorithms.csproj", "{77087F3E-230A-4B89-AAA9-CE25F3A0FE76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication4", "WpfApplication4\WpfApplication4.csproj", "{23894E88-0254-4241-AA95-C899FA04EEE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{77087F3E-230A-4B89-AAA9-CE25F3A0FE76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77087F3E-230A-4B89-AAA9-CE25F3A0FE76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77087F3E-230A-4B89-AAA9-CE25F3A0FE76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23894E88-0254-4241-AA95-C899FA04EEE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23894E88-0254-4241-AA95-C899FA04EEE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23894E88-0254-4241-AA95-C899FA04EEE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23894E88-0254-4241-AA95-C899FA04EEE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
