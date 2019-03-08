@@ -290,10 +290,12 @@ namespace Search
                 }
             }
 
-            // Tell the user where the item was found by the search algorithm
-            Console.WriteLine($"\nFound {searchItem} at {result + 1}!");
-            // Tell the user how long the search took
-            Console.WriteLine($"This search took {watch.ElapsedMilliseconds} milliseconds!");
+            // If we find the item in the list
+            Console.WriteLine(result >= 0
+                ? $"\nFound {searchItem} at {result + 1}!"
+                : "\nThe item was not found in the list!");
+            // Tell the user how long the algorithm took
+            Console.WriteLine($"This algorithm took {watch.ElapsedMilliseconds} milliseconds!");
 
             // 'Pause' the program until the user presses a key
             Console.WriteLine("Press any key to exit...");
