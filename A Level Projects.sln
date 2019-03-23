@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search + Sort Algorithms", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication4", "WpfApplication4\WpfApplication4.csproj", "{23894E88-0254-4241-AA95-C899FA04EEE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceInvadersOOP", "SpaceInvadersOOP\SpaceInvadersOOP.csproj", "{B878641B-36C2-46A3-A77C-A9860F8232B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{23894E88-0254-4241-AA95-C899FA04EEE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23894E88-0254-4241-AA95-C899FA04EEE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23894E88-0254-4241-AA95-C899FA04EEE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B878641B-36C2-46A3-A77C-A9860F8232B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B878641B-36C2-46A3-A77C-A9860F8232B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B878641B-36C2-46A3-A77C-A9860F8232B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B878641B-36C2-46A3-A77C-A9860F8232B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
